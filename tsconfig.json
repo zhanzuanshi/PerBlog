@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/api/node/app.js", "src/api/mysql/config.js", "src/api/mysql/db.js"  ],
   "exclude": [
     "node_modules"
   ]

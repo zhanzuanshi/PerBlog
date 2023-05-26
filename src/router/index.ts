@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { routerListType } from '@/types/routerList'
-import NavList from '../pulgins/navList'
+import routerList from '../pulgins/navList'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -11,11 +11,22 @@ const routes: Array<RouteRecordRaw> = [
     ]
   },
 ]
-let routerList:routerListType=[]
+// const store=mystore()
+// console.log(routesList);
+const routesList=routerList
+  routesList.forEach((val:routerListType) => {
+    const childrenList={
+      path:val.path,
+      name:val.name,
+      component:()=>import(`../views/${val.component}.vue`),
+      children:val.children
+    }
+    routes[0].children?.push(
+      childrenList
+    )
+    
+  });
 
-routes[0].children?.push(
-
-)
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes

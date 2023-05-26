@@ -2,7 +2,7 @@ export default [
   {
     path: "/",
     name: "home",
-    component: "Home",
+    component: "Main",
     meta: {
       title: "首页",
       icon: "",
@@ -56,9 +56,17 @@ export default [
   {
     path: "/friends",
     name: "friends",
-    component: "Friends",
+    component: "Friend",
     meta: {
       title: "友链",
+      icon: "",
+    },
+  },
+  {
+    path: "/read",
+    name: "read",
+    component: "Read",
+    meta: {
       icon: "",
     },
   },
