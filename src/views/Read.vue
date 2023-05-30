@@ -29,7 +29,11 @@ let Article: Ref<ArticleList[]> = ref([])
     
 // }
 onMounted(async () => {
-    Article.value = await getArticle(route.query.name)
+    if(route.query.name){
+        Article.value = await getArticle(route.query.name)
+    }else{
+        Article.value=await getArticle(null,route.query.label)
+    }
     console.log(Article.value);
 })
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="brand">
+    <!-- <div class="brand">
         <div class="bg-cover">
             <h1>友情链接</h1><br>
             <p v-if="DaliWord" class="dailword">{{ DaliWord }}</p>
@@ -15,59 +15,26 @@
             </a>
         </div>
 
-    </div>
+    </div> -->
+    <Content :pageTitle="pageTitle">
+        <a href="http://8.130.66.222:1111/" class="href">
+                <div class="box">
+                    <h1 class="title">书墨中文网</h1>
+                    <p class="desc">我的小说网站项目</p>
+                    <button class="btn">前去查看</button>
+
+                </div>
+            </a>
+    </Content>
 </template>
 
 <script setup lang="ts">
-import axios from 'axios';
 import { onMounted, ref } from 'vue';
-let DaliWord = ref('')
-onMounted(() => {
-    axios({
-        method: 'get',
-        url: 'https://saying.api.azwcl.com/saying/get'
-    }).then((res) => {
-        DaliWord.value = res.data.data.content
-
-    })
-})
-
+import Content from '@/components/Content.vue';
+const pageTitle='友情链接'
 </script>
 
 <style lang="less" scoped>
-.brand {
-    position: absolute;
-    top: 70px;
-    left: 50%;
-    width: 100%;
-    transform: translate(-50%);
-    height: 50px;
-    line-height: 50px;
-    color: white;
-    z-index: -1;
-
-    .bg-cover {
-        height: 60vh;
-        background-image: url('https://api.cyrilstudio.top/bing/image.php');
-        background-position: center center;
-        background-size: cover;
-    }
-
-    .dailword {
-        font-size: 18px;
-    }
-
-    .card {
-        width: 80%;
-        position: absolute;
-        top: 140px;
-        left: 50%;
-        transform: translate(-50%);
-        display: flex;
-        justify-content: space-around;
-        background-color: white;
-        height: calc(100vh - 150px);
-        border-radius: 15px;
 
         .href {
             margin: 20px;
@@ -102,7 +69,4 @@ onMounted(() => {
                 }
             }
         }
-    }
-
-
-}</style>
+</style>

@@ -1,11 +1,12 @@
 <template>
     <div>
-<h3>关于</h3>
+<Content :pageTitle="pageTitle"></Content>
     </div>
 </template>
 
 <script setup lang="ts">
-
+import Content from '@/components/Content.vue';
+const pageTitle='关于'
 </script>
 
 <style scoped>

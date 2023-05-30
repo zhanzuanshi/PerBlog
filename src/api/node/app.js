@@ -15,12 +15,16 @@ const jsonParser=bodyParser.json()
 app.get('/articles',jsonParser,(req,res)=>{
     const params=req.query
     console.log(params);
+    const parKey=Object.keys(params)[0]
+    const value=`%${params[parKey]}%`
+    console.log(parKey,value);
     let sel_sql='select * from blog_article'
-    if(params.name){
-        sel_sql='select * from blog_article where articleName=?'
+    if(parKey){
+        sel_sql=`select * from blog_article where ${parKey} like ?`
     }
     
-    connection.query(sel_sql,params.name,(err,data)=>{
+    connection.query(sel_sql,value,(err,data)=>{
+        console.log(sel_sql);
         if(err){
             console.log(err);
             
@@ -30,8 +34,8 @@ app.get('/articles',jsonParser,(req,res)=>{
     })
 })
 // 获取标签
-app.get('/lables',jsonParser,(req,res)=>{
-    const sel_sql='select articleType as type from blog_article'
+app.get('/labels',jsonParser,(req,res)=>{
+    const sel_sql='select articleLable as type from blog_article'
     connection.query(sel_sql,(err,data)=>{
         if(err){
             console.log(err);

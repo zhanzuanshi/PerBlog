@@ -53,7 +53,7 @@ import { read } from '@popperjs/core';
 let Articles: Ref<ArticleList[]> = ref([])
 onMounted(async () => {
     Articles.value = await getArticle()
-    console.log(Articles);
+    // console.log(Articles);
     // return Articles
 })
 </script>
@@ -151,7 +151,7 @@ onMounted(async () => {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                // backdrop-filter: blur(10px);
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                a{
                 text-decoration: none;
                 z-index: 1;

@@ -1,11 +1,12 @@
 import request from "./axios";
 // 获取所有文章
-  export function getArticle(articleName?:any){
+  export function getArticle(articleName?:any,articleLable?:any){
         return request({
             method:'get',
             url:`/articles`,
             params:{
-                name:articleName
+                articleName:articleName,
+                articleLable:articleLable
             }
         }).then((res)=>{
                     return res.data
@@ -16,10 +17,10 @@ import request from "./axios";
 
 
 // 获取所有分类
-export function getLable(){
+export function getLabel(){
     return request({
         method:'get',
-        url:'/lables'
+        url:'/labels'
     }).then((res)=>{
         return res.data
     })
