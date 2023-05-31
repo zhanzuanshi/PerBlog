@@ -45,7 +45,33 @@ app.get('/labels',jsonParser,(req,res)=>{
         }
     })
 })
-
+// // 获取留言
+app.get('/comment',jsonParser,(req,res)=>{
+    const sel_sql='select * from blog_contact'
+    connection.query(sel_sql,(err,data)=>{
+        if(err){
+            console.log(err)
+        }
+        else{
+            res.send(data)
+        }
+    })
+})
+// 提交留言
+app.post('/sendComment',jsonParser,(req,res)=>{
+    const time= Date.now() //获取当前时间戳作为id传入
+    const params=req.body
+    const userInfo=params.userInfo
+    console.log(params);
+    const sel_sql='insert into blog_contact (user_id,user_name,user_email,user_url,user_contact) values (?,?,?,?,?)'
+    connection.query(sel_sql,[time,userInfo.userName,userInfo.userEmail,userInfo.userUrl,params.comment],(err,data)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send('ok')
+        }
+    })
+})
 // 端口监听
 app.listen(port,() => {
     console.log(`express server listen at http://localhost:${port}`)
