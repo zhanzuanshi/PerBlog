@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <div class="top">
-            <img src="https://api.cyrilstudio.top/bing/image.php" alt="">
+            <!-- <img src="https://api.cyrilstudio.top/bing/image.php" alt=""> -->
             <div class="container">
                 <p class="title">Diamond</p>
                 <span class="aWord">最可怕的不是有人比你优秀，而是比你优秀的人还比你更努力。</span>
@@ -32,11 +32,11 @@
                     <h1>文章推荐</h1>
                     <div class="article-box">
                         <div class="article" v-for="(item, index) in Articles" :key="index">
-                           <router-link :to={name:read,query:{name:item.articleName}}>
-                             <h3 class="title">{{ item.articleName }}</h3>
-                            <i class="lable">{{ item.articleLable }}</i>
-                            <button class="btn">阅读更多</button>
-                        </router-link>
+                            <router-link :to={name:read,query:{name:item.articleName}}>
+                                <span class="title">{{ item.articleName }}</span>
+                                <i class="lable">{{ item.articleLable }}</i>
+                                <button class="btn">阅读更多</button>
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -61,11 +61,11 @@ onMounted(async () => {
 <style lang="less" scoped>
 .main {
     .top {
-        img {
             width: 100%;
             height: 100vh;
-        }
-
+            background-image: url("https://api.cyrilstudio.top/bing/image.php");
+            background-position: center center;
+            background-size: cover;
         .container {
             color: white;
             position: absolute;
@@ -120,7 +120,7 @@ onMounted(async () => {
             margin: 50px 0;
 
             .motto {
-                font-size: 20px;
+                font-size: 1.3rem;
             }
         }
 
@@ -129,16 +129,20 @@ onMounted(async () => {
             margin: 50px auto;
 
             .anno {
-                font-size: 20px;
+                font-size: 1.3rem;
                 line-height: 40px;
             }
         }
 
         .recomArticle {
+            overflow: hidden;
+
             .article-box {
                 display: flex;
                 justify-content: space-around;
                 flex-flow: wrap;
+                overflow: hidden;
+                padding: 10px;
             }
 
             .article {
@@ -147,25 +151,31 @@ onMounted(async () => {
                 width: 500px;
                 height: 300px;
                 margin: 30px 0;
+                padding: 30px 0;
                 border-radius: 5px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-               a{
-                text-decoration: none;
-                z-index: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-               } 
+
+                a {
+                    text-decoration: none;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                }
+
                 .title {
                     color: aliceblue;
                     font-size: 1.8rem;
+                    font-weight: bolder;
+                    margin: 20px;
                 }
 
                 .lable {
                     color: beige;
+                    margin: 20px;
                 }
 
                 .time {
@@ -180,20 +190,34 @@ onMounted(async () => {
                     z-index: 1;
                     border: none;
                     color: white;
-                    font-size: 16px;
+                    font-size: 1rem;
                     background: linear-gradient(to right, #faee87, #00BFFF);
                 }
             }
         }
 
-        .article::after {
+        .article::before {
             content: '';
             position: absolute;
+            display: block;
             width: 500px;
             height: 300px;
+            overflow: hidden;
             border-radius: 5px;
             background-color: black;
             opacity: 0.3;
+        }
+        @media screen and(max-width: 376px) {
+            .article::before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 5px;
+            opacity: 0.3;
+        }
         }
     }
 }</style>

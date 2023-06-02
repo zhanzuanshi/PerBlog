@@ -19,7 +19,7 @@
     <div class="stacom">{{ stacom }}条评论</div>
     <div class="showComment" v-for="item in comList">
         <div class="left">
-          111
+          <img src="../assets/img/BackGround.jpg" alt="头像" class="headImg">
         </div>
         <div class="right">
             <span class="username">{{item.user_name}}</span>
@@ -101,6 +101,7 @@ onMounted(()=>{
     }
     input:focus{
         border-bottom: 1.5px solid green;
+        transition: all .3s;
     }
     }
     .comment{
@@ -138,6 +139,11 @@ onMounted(()=>{
         .left{
             width: 100px;
             line-height:170px;
+            .headImg{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
         }
         .right{
             display: flex;

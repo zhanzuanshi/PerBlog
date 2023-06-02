@@ -16,12 +16,15 @@ const navList=ref(NavList)
 let  menuList: Array<MenuListItem>=[]
 const getMenu=()=>{
   navList.value.forEach((val)=>{
-    let obj:MenuListItem={
+    if(val.meta.title){
+        let obj:MenuListItem={
         title:val.meta.title,
         path:val.path,
         icon:val.meta.icon
     }
     menuList.push(obj)
+    }
+    
     return menuList
   })
    console.log(menuList);

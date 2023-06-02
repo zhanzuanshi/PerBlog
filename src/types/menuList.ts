@@ -1,5 +1,5 @@
 export interface MenuListItem{
-    title:string,
+    title:string |undefined,
     path:string,
     icon:string
 }
