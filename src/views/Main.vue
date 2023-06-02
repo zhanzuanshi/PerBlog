@@ -97,6 +97,7 @@ onMounted(async () => {
             margin: auto;
 
             a {
+                font-size: 2rem;
                 color: aliceblue;
                 text-decoration: none;
             }
@@ -207,12 +208,12 @@ onMounted(async () => {
             background-color: black;
             opacity: 0.3;
         }
-        @media screen and(max-width: 376px) {
+        @media screen and(max-width: 900px) {
             .article::before {
             content: '';
             position: absolute;
             display: block;
-            width: 300px;
+            width: 80%;
             height: 300px;
             overflow: hidden;
             border-radius: 5px;

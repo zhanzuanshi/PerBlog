@@ -55,7 +55,7 @@ onMounted(() => {
         justify-content: center;
         
         .title{
-            font-size: 50px;
+            font-size: 2rem;
             font-weight: bolder;
         }
         .dailword {
@@ -65,6 +65,7 @@ onMounted(() => {
     .card {
         width: 90%;
         position: absolute;
+        padding: 10px;
         top: 45vh;
         left: 50%;
         transform: translate(-50%);
